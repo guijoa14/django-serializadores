@@ -68,6 +68,8 @@ def comic_create_api_view(request):
     )
 
 
+
+
 # NOTE: APIs genéricas:
 class GetComicAPIView(ListAPIView):
     '''
@@ -228,3 +230,19 @@ class GetOneMarvelComicAPIView(RetrieveAPIView):
 
 
 # TODO: Class API Views for User and WishList
+
+class UserListAPIView(ListAPIView):
+
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserRetrieveAPIView(RetrieveAPIView):
+
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = 'username'
+
+class WishListAPIView(ListCreateAPIView):
+
+    queryset = WishList.objects.all()
+    serializer_class = WishListSerializer
